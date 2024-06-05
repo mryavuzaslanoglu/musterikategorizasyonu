@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "596270852402",
+    "project_id": "musterikategorizasyonu",
+    "storage_bucket": "musterikategorizasyonu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596270852402:android:702020908507e680d04f2b",
+        "android_client_info": {
+          "package_name": "com.example.musterikategorizasyon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdWrxd7ECN91rbLc0bLRufgWOC9x-SZ_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services'  // Firebase için
+    id 'dev.flutter.flutter-gradle-plugin'
+}
+
+android {
+    namespace 'com.example.musterikategorizasyon' // Namespace özelliği eklendi
+
+    compileSdkVersion 34
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    defaultConfig {
+        applicationId "com.example.musterikategorizasyon"
+        minSdkVersion 21
+        targetSdkVersion 34 // SDK versiyonunu güncelledim
+        multiDexEnabled true
+
+        versionCode 1 // Sürüm kodunu istediğiniz değere ayarlayın
+        versionName "1.0" // Sürüm adını istediğiniz değere ayarlayın
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true // Kullanılmayan kodları kaldırma işlemini etkinleştir
+            shrinkResources true // Kullanılmayan kaynakları kaldırma işlemini etkinleştir
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:31.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-messaging'
+    // Diğer bağımlılıklarınızı buraya ekleyebilirsiniz
+}
+
+flutter {
+    source '../..'
+}
+
+// Apply Google services plugin at the end
+apply plugin: 'com.google.gms.google-services'
+
+// Task bağımlılığını ekleyin
+tasks.whenTaskAdded { task ->
+    if (task.name == 'mapDebugSourceSetPaths') {
+        task.dependsOn 'processDebugGoogleServices'
+    }
+}
